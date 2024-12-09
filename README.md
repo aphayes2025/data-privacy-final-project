@@ -1,8 +1,12 @@
 # data-privacy-final-project
 
-Problem Statement: Given a dataset containing numerous features of wine (fixed_acidity, volatile_acidity,...) I aim to predict wine quality, an integer, using a differentially private gradient descent algorithm. I will be using mean squared error (MSE) for the gradient descent algorithm, which is typically used when trying to predict a continuous value. 
+## Problem Statement: 
 
-Technical Description: 
+Given a dataset containing numerous features of wine (fixed_acidity, volatile_acidity,...) I aim to predict wine quality, an integer, using a differentially private gradient descent algorithm. I will be using mean squared error (MSE) for the gradient descent algorithm, which is typically used when trying to predict a continuous value. 
+
+---
+
+## Technical Description: 
 
 First, the wine CSV files were read into pandas dataframes. Then I created an X variable, which held all rows with the predictors of the wine quality, and the Y variable, which held all the rows with the label (wine quality.) I created my training and testing sets (X_train, y_train, X_test, y_test) by indexing my X and y variables, I set my training set to be 80% of my total data. After I created numerous functions to help with my implementation of noisy gradient descent. 
 
@@ -14,7 +18,11 @@ noisy_gradient_descent() takes in three parameters, the amount of times to perfo
 
 Two functions were used to evaluate how my test set did with my model, predict() and accuracy(). predict() takes in a feature vector (xi), and the weights of the model (theta) to predict a label (continuous value) of wine. accuracy() takes in the weights of the model (theta) and calls predict() on the entire test set and evaluates it by subtracting the predicted by the actual and squaring that result (MSE). 
 
-Description of results: I created two other files for baselines on my data. First, I ran gradient descent on my data by fitting it to a sci-kit learn LinearRegression() model and evaluted it using MSE. Then I ran my coded version of gradient descent without noise for another baseline. Lastly, as described above I implemented noisy gradient descent. Here are the benchmarks. Key note: I used the white wine dataset for benchmarking due to the higher number of examples for training and testing. All benchmarks used the same data with the same train/test split percentage. Also, epsilon was set to 1.0 and Delta to 1e-5 (0.00001) for gradient_descent() and noisy_gradient_descent().  It was found that the gradient_descent() converges at around 1800 iterations of GD with a LR of 0.000042. For the MSE score for noisy_gradient_descent(), I also found the optimal solution converged at around 1800 iterations, so I ran noisy_gd 10 different times with 1800 iterations and averaged the results to find the mse score.
+---
+
+## Description of results: 
+
+I created two other files for baselines on my data. First, I ran gradient descent on my data by fitting it to a sci-kit learn LinearRegression() model and evaluted it using MSE. Then I ran my coded version of gradient descent without noise for another baseline. Lastly, as described above I implemented noisy gradient descent. Here are the benchmarks. Key note: I used the white wine dataset for benchmarking due to the higher number of examples for training and testing. All benchmarks used the same data with the same train/test split percentage. Also, epsilon was set to 1.0 and Delta to 1e-5 (0.00001) for gradient_descent() and noisy_gradient_descent().  It was found that the gradient_descent() converges at around 1800 iterations of GD with a LR of 0.000042. For the MSE score for noisy_gradient_descent(), I also found the optimal solution converged at around 1800 iterations, so I ran noisy_gd 10 different times with 1800 iterations and averaged the results to find the mse score.
 
 LinearRegression() with scikit-learn MSE score: 0.5072104636729868
 gradient_descent(): 0.5677132593477637
@@ -22,8 +30,11 @@ noisy_gradient_descent(): 4.153564548955102
 
 Overall, the results with noisy gradient descent were less successful. Seeing as the ranges of the quality range from 3-7 for white wine, having a MSE of 4.15 is not helpful. However, I believe with parameter optimization we could see an increase in the results (decrease in MSE). There are techinques for optimizing hyperparameters while satisfying DP (paper: https://arxiv.org/pdf/2110.03620). I am interested in trying out these techniques and will try to implement them, and I will update the readme when I have come to a conclusion. 
 
+---
 
-Citation for data used:
+## Citations
  P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. 
   Modeling wine preferences by data mining from physicochemical properties.
   In Decision Support Systems, Elsevier, 47(4):547-553. ISSN: 0167-9236.
+
+  Menon, Adarsh. “Linear Regression Using Gradient Descent.” Medium, Towards Data Science, 19 Sept. 2018, towardsdatascience.com/linear-regression-using-gradient-descent-97a6c8700931. 
