@@ -28,9 +28,9 @@ LinearRegression() with scikit-learn MSE score: 0.5072104636729868
 gradient_descent(): 0.5677132593477637
 noisy_gradient_descent(): 4.153564548955102
 
-Overall, the results with noisy gradient descent were less successful. Seeing as the ranges of the quality range from 3-7 for white wine, having a MSE of 4.15 is not helpful. However, I believe with parameter optimization we could see an increase in the results (decrease in MSE). There are techinques for optimizing hyperparameters while satisfying DP (paper: https://arxiv.org/pdf/2110.03620). I am interested in trying out these techniques and will try to implement them, and I will update the readme when I have come to a conclusion. 
+Overall, the results with noisy gradient descent were less successful. Seeing as the ranges of the quality range from 3-7 for white wine, having a MSE of 4.15 is not helpful. I attempted using other DP variants that provide tighter bounds on privacy costs including zero-concentrated differential privacy (zCDP) and Rényi differential privacy (RDP). First, when using zCDP with a rho value=0.1, my MSE was similar, scoring a 4.14. Given a rho value of 0.1 and a delta value of 1e-5, it represents an epsilon value approximately of 2.2. So even when increasing my privacy budget and using a variant of DP that provides a better bound on privacy, it did not score better. Similar results were found when using RDP. 
 
----
+However, I believe with parameter optimization we could see an increase in the results (decrease in MSE). 
 
 ## Citations
  P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. 
